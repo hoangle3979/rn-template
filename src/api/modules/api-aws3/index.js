@@ -1,8 +1,8 @@
-import { RNS3 } from 'react-native-aws3';
-import { loading } from './common';
+import {RNS3} from 'react-native-aws3';
+import {loading} from './common';
 import axios from 'axios';
 import ImagePicker from 'react-native-image-crop-picker';
-import { store } from '../../redux/store';
+import {store} from '../../redux/store';
 
 let _options = {
   secretKey: '',
@@ -12,7 +12,7 @@ let _options = {
 };
 
 export const apiAws3 = {
-  upload: (url: String, mine = 'image/jpeg') => {
+  upload: (url, mine = 'image/jpeg') => {
     const timeStamp = new Date().getTime();
     const bodyFormData = {
       uri: url,
@@ -22,13 +22,13 @@ export const apiAws3 = {
     return RNS3.put(bodyFormData, getOption());
   },
   uploadPhoto: async () => {
-    const { init } = store.getState();
+    const {init} = store.getState();
     try {
       const image = await ImagePicker.openPicker({
         width: 600,
         height: 600,
         size: 200 * 1024,
-        // compressImageQuality: 200 * 1024,
+        // compressImageQuality: 1,
         compressImageMaxWidth: 600,
         compressImageMaxHeight: 600,
         cropping: true

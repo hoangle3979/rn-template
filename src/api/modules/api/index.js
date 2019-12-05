@@ -9,7 +9,7 @@ const _api = axios.create({
 
 _api.interceptors.request.use(
   config => {
-    config.headers.common['secret_key'] = Config.SECRET_KEY;
+    config.headers.common.secret_key = Config.SECRET_KEY;
     if (getToken()) {
       config.headers.token = getToken();
     }
